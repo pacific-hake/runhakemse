@@ -5,12 +5,6 @@ library(here)
 results_root_dir <- here("results")
 results_dir <- file.path(results_root_dir, "climate")
 
-ss_model_yr <- 2018
-ss_model_output_dir <- file.path(system.file(package = "pacifichakemse", mustWork = TRUE),
-                                 "extdata", paste0("SS3_", ss_model_yr))
-ss_model_data_csv_dir <- file.path(system.file(package = "pacifichakemse", mustWork = TRUE),
-                                   "extdata", "csv-data")
-
 fns <- c("01_MSErun_move_JMC_climate_00_HYBR_TAC3",
          "02_MSErun_move_JMC_climate_02_HYBR_TAC3",
          "03_MSErun_move_JMC_climate_04_HYBR_TAC3")
@@ -47,11 +41,7 @@ moveout_decreases <- c(0.00, 0.005, 0.02)
 # A vector with one element for each scenario, or a single value to use for all scenarios
 sel_changes <- 0
 
-run_mses(ss_model_output_dir = ss_model_output_dir,
-         ss_model_data_csv_dir = ss_model_data_csv_dir,
-         load_extra_mcmc = FALSE,
-         overwrite_ss_rds = FALSE,
-         n_runs = 20,
+run_mses(n_runs = 20,
          n_sim_yrs = 30,
          sel_change_yr = 1991,
          fns = fns,

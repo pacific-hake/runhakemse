@@ -10,20 +10,8 @@ fns <- "sqrec"
 
 plotnames <- "Area rec"
 
-ss_model_yr <- 2018
-ss_model_output_dir <- file.path(system.file(package = "pacifichakemse", mustWork = TRUE),
-                                 "extdata", paste0("SS3_", ss_model_yr))
-ss_model_data_csv_dir <- file.path(system.file(package = "pacifichakemse", mustWork = TRUE),
-                                   "extdata", "csv-data")
-
-ss_model <- load_ss_model_data(ss_model_output_dir = ss_model_output_dir,
-                               ss_model_data_csv_dir = ss_model_data_csv_dir,
-                               load_extra_mcmc = FALSE,
-                               overwrite_ss_rds = TRUE)
-
-run_oms(ss_model = ss_model,
-        # n_runs will be changed to 1 in the code if include_recruitment is FALSE
-        # because all runs will be the same
+run_oms(# n_runs will be changed to 1 in the code if include_recruitment
+        # is FALSE because all runs will be the same
         n_runs = 10,
         yr_future = 50,
         fns = fns,
@@ -42,8 +30,9 @@ run_oms(ss_model = ss_model,
         hcr_lower = 0.1,
         hcr_upper = 0.4,
         hcr_fspr = 0.4,
-        # If random_recruitment is TRUE, add random normal recruitment deviations to the projection years,
-        # if FALSE, only stock-recruit based recruitment is included with zero deviations
+        # If random_recruitment is TRUE, add random normal recruitment
+        # deviations to the projection years, if FALSE, only stock-recruit
+        # based recruitment is included with zero deviations
         random_recruitment = FALSE,
         plot_names = plotnames,
         random_seed = 12345,

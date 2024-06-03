@@ -5,12 +5,6 @@ library(here)
 results_root_dir <- here("results")
 results_dir <- file.path(results_root_dir, "attainment")
 
-ss_model_yr <- 2018
-ss_model_output_dir <- file.path(system.file(package = "pacifichakemse", mustWork = TRUE),
-                                 "extdata", paste0("SS3_", ss_model_yr))
-ss_model_data_csv_dir <- file.path(system.file(package = "pacifichakemse", mustWork = TRUE),
-                                   "extdata", "csv-data")
-
 fns <- c("01_us_0_can_0",
          "02_us_100_can_100")
 
@@ -43,11 +37,7 @@ moveout_decreases <- 0
 # A vector with one element for each scenario, or a single value to use for all scenarios
 sel_changes <- 0
 
-run_mses(ss_model_output_dir = ss_model_output_dir,
-         ss_model_data_csv_dir = ss_model_data_csv_dir,
-         load_extra_mcmc = FALSE,
-         overwrite_ss_rds = TRUE,
-         n_runs = 10,
+run_mses(n_runs = 10,
          n_sim_yrs = 30,
          fns = fns,
          plot_names = plotnames,

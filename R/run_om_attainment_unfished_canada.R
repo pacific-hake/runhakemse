@@ -3,27 +3,15 @@ load_all("../pacifichakemse")
 library(here)
 
 results_root_dir <- here("results")
-#results_dir <- file.path(results_root_dir, "om_attainment_recr_hcr_1e6_catch")
-results_dir <- file.path(results_root_dir, "om_attainment_recr_hcr_default_catch")
-
-ss_model_yr <- 2018
-ss_model_output_dir <- file.path(system.file(package = "pacifichakemse", mustWork = TRUE),
-                                 "extdata", paste0("SS3_", ss_model_yr))
-ss_model_data_csv_dir <- file.path(system.file(package = "pacifichakemse", mustWork = TRUE),
-                                   "extdata", "csv-data")
+results_dir <- file.path(results_root_dir,
+                         "om_attainment_recr_hcr_default_catch")
 
 fns <- "03_us_100_can_0"
 
 plotnames <- "Full attainment US, no CAN fishery"
 
-ss_model <- load_ss_model_data(ss_model_output_dir = ss_model_output_dir,
-                               ss_model_data_csv_dir = ss_model_data_csv_dir,
-                               load_extra_mcmc = FALSE,
-                               overwrite_ss_rds = TRUE)
-
-run_oms(ss_model = ss_model,
-        # `n_runs` will be changed to 1 in the code if `include_recruitment` is FALSE
-        # because all runs will be the same
+run_oms(# `n_runs` will be changed to 1 in the code if `include_recruitment`
+        # is FALSE because all runs will be the same
         n_runs = 100,
         yr_future = 50,
         fns = fns,
@@ -39,15 +27,16 @@ run_oms(ss_model = ss_model,
         attain = c(0, 1),
         # if `tac` is a vector of 2 values: c(a, b): the new catch
         # in the OM is catch * b + a. If a single value, the expanded catch in
-        # the OM will be catch * 0.5 unless below `catch_floor` (180,000 by default)
-        # in which case it will be catch = `catch_floor`.
+        # the OM will be catch * 0.5 unless below `catch_floor` (180,000 by
+        # default) in which case it will be catch = `catch_floor`.
         tac = c(0, 1),
         hcr_apply = TRUE,
         hcr_lower = 0.1,
         hcr_upper = 0.4,
         hcr_fspr = 0.4,
-        # If `random_recruitment` is TRUE, add random normal recruitment deviations to the projection years,
-        # if FALSE, only stock-recruit based recruitment is included with zero deviations
+        # If `random_recruitment` is TRUE, add random normal recruitment
+        # deviations to the projection years, if FALSE, only stock-recruit
+        # based recruitment is included with zero deviations
         random_recruitment = TRUE,
         catch_floor = 180000,
         plot_names = plotnames,
