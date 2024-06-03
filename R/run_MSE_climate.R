@@ -1,6 +1,4 @@
-#library(pacifichakemse)
-load_all("../pacifichakemse")
-library(here)
+source(here::here("R", "run-mse-generic.R"))
 
 results_root_dir <- here("results")
 results_dir <- file.path(results_root_dir, "climate")

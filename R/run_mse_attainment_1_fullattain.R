@@ -5,6 +5,15 @@ library(here)
 results_root_dir <- here("results")
 results_dir <- file.path(results_root_dir, "mse_attainment")
 
+<<<<<<< HEAD
+=======
+ss_model_yr <- 2018
+ss_model_output_dir <- file.path(system.file(package = "pacifichakemse", mustWork = TRUE),
+                                 "extdata", paste0("SS3_", ss_model_yr))
+ss_model_data_csv_dir <- file.path(system.file(package = "pacifichakemse", mustWork = TRUE),
+                                   "extdatadata:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAbElEQVR4Xs2RQQrAMAgEfZgf7W9LAguybljJpR3wEse5JOL3ZObDb4x1loDhHbBOFU6i2Ddnw2KNiXcdAXygJlwE8OFVBHDgKrLgSInN4WMe9iXiqIVsTMjH7z/GhNTEibOxQswcYIWYOR/zAjBJfiXh3jZ6AAAAAElFTkSuQmCC", "csv-data")
+
+>>>>>>> 4cde7d9 (Changes to standardize scripts (begin))
 fns <- "01_us_100_can_100"
 
 plotnames <- "Full attainment coastwide"
