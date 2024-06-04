@@ -18,7 +18,7 @@ user <- Sys.info()[["user"]]
 # `results_root_dir` is the directory name in which all output from the MSE
 # runs will be stored
 
-if(user == "grandin"){
+if(as.logical(length(grep("grandin", user)))){
   pacifichakemse_repo_dir <- "~/github/pacific-hake/pacifichakemse"
   ss_model_dir <- "/srv/hake/models/2024/02-version/01-base-models/01-base"
   results_root_dir <- file.path(pacifichakemse_repo_dir, "results")
@@ -68,4 +68,3 @@ assess_url <- file.path(
 
 assess_tables_dir <- file.path(assess_url,
                                "data-tables")
-

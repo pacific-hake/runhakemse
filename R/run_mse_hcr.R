@@ -50,11 +50,7 @@ moveout_decreases <- 0
 #  for all scenarios
 sel_changes <- 0
 
-run_mses(ss_model_output_dir = ss_model_dir,
-         ss_model_data_csv_dir = assess_tables_dir,
-         load_extra_mcmc = FALSE,
-         overwrite_ss_rds = FALSE,
-         n_runs = 1,
+run_mses(n_runs = 1,
          n_sim_yrs = 2,
          fns = fns,
          plot_names = plot_names,
@@ -78,4 +74,5 @@ run_mses(ss_model_output_dir = ss_model_dir,
          catch_floor = 180000,
          save_all_em = FALSE,
          verbose = TRUE,
+         data_tables_url = assess_tables_dir,
          rds_fn = rds_fn)
