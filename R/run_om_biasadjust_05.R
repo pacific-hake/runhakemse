@@ -8,7 +8,8 @@ fns <- "MSErun_move_nofishing_biasadj_med"
 
 plotnames <- "Bias 0.5"
 
-run_oms(# n_runs will be changed to 1 in the code if include_recruitment
+run_oms(ss_model = ss_model,
+        # n_runs will be changed to 1 in the code if include_recruitment
         # is FALSE because all runs will be the same
         n_runs = 100,
         yr_future = 50,

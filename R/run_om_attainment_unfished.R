@@ -1,6 +1,4 @@
-#library(pacifichakemse)
-load_all("../pacifichakemse")
-library(here)
+source(here::here("R/run-mse-generic.R"))
 
 results_root_dir <- here("results")
 results_dir <- file.path(results_root_dir,
@@ -10,7 +8,8 @@ fns <- "01_us_0_can_0"
 
 plotnames <- "Unfished"
 
-run_oms(# `n_runs` will be changed to 1 in the code if `include_recruitment`
+run_oms(ss_model = ss_model,
+        # n_runs will be changed to 1 in the code if include_recruitment
         # is FALSE because all runs will be the same
         n_runs = 100,
         yr_future = 50,

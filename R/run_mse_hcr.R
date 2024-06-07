@@ -50,8 +50,8 @@ moveout_decreases <- 0
 #  for all scenarios
 sel_changes <- 0
 
-run_mses(n_runs = 1,
-         n_sim_yrs = 2,
+run_mses(n_runs = 5,
+         n_sim_yrs = 30,
          fns = fns,
          plot_names = plot_names,
          tacs = tacs,

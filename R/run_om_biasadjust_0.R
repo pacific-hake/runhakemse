@@ -1,5 +1,4 @@
-load_all("../pacifichakemse/")
-library(here)
+source(here::here("R/run-mse-generic.R"))
 
 results_root_dir <- here("results")
 results_dir <- file.path(results_root_dir, "biasadjust")
@@ -7,10 +6,18 @@ results_dir <- file.path(results_root_dir, "biasadjust")
 fns <- "MSErun_move_nofishing_nobiasadj"
 
 plotnames <- "Bias 0"
+# Load the raw SS model inputs and outputs using the r4ss package and the same
+# methods used in the `hake-assessment` package
+# Create objects from the raw SS model inputs and outputs and
+# only include those in this list. To add new SS model outputs,
+# modify the `load_ss_model_data()` function
+ss_model <- load_ss_model_data(data_tables_url = assess_tables_dir,
+                               rds_fn = rds_fn)
 
-run_oms(# n_runs will be changed to 1 in the code if include_recruitment
+run_oms(ss_model = ss_model,
+        # n_runs will be changed to 1 in the code if include_recruitment
         # is FALSE because all runs will be the same
-        n_runs = 100,
+        n_runs = 20,
         yr_future = 50,
         fns = fns,
         n_surveys = 2,

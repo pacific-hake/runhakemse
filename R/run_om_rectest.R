@@ -1,5 +1,3 @@
-
-library(devtools)
 load_all("../pacifichakemse/")
 library(here)
 
@@ -10,7 +8,8 @@ fns <- "sqrec"
 
 plotnames <- "Area rec"
 
-run_oms(# n_runs will be changed to 1 in the code if include_recruitment
+run_oms(ss_model = ss_model,
+        # n_runs will be changed to 1 in the code if include_recruitment
         # is FALSE because all runs will be the same
         n_runs = 10,
         yr_future = 50,
